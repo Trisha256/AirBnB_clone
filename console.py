@@ -14,7 +14,7 @@ from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
-    """Defines the HolbertonBNB command interpreter.
+    """Defines the HBNBCommand interpreter.
 
     Attributes:
         prompt(str): The command prompt.
@@ -30,6 +30,15 @@ class HBNBCommand(cmd.Cmd):
             "Amenity",
             "Review"
             }
+
+     def do_quit(self, arg):
+        """Exit the program"""
+        return True
+
+    def do_EOF(self, arg):
+        """Exit the program"""
+        print()  # Print a newline before exiting
+        return True
 
     def emptyline(self):
         """Do nothing when an empty line is entered"""
@@ -55,15 +64,6 @@ class HBNBCommand(cmd.Cmd):
                     return arg_dict[command[0]](call)
         print("*** Unknown syntax: {}".format(arg))
         return False
-
-    def do_quit(self, arg):
-        """Exit the program."""
-        return True
-
-    def do_EOF(self, arg):
-        """Exit the program."""
-        print()  # print a new line before exiting
-        return True
 
     def do_create(self, arg):
         """Usage: create <class>
