@@ -20,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
         prompt(str): The command prompt.
     """
 
-    prompt = "(hbnb) "
+    prompt = '(hbnb) '
     __classes = {
             "BaseModel",
             "User",
