@@ -48,6 +48,8 @@ class HBNBCommand(cmd.Cmd):
             "Review": Review
             }
 
+    test_dict = {}
+
     def do_quit(self, arg):
         """Exit the program"""
         return True
@@ -198,6 +200,7 @@ class HBNBCommand(cmd.Cmd):
             if attribute not in ["id", "created_at", "updated_at"]:
                 setattr(instance, attribute, type(getattr(instance, attribute))(value))
                 storage.save()
+                HBNBCommand.test_dict[key] = {attribute: value}  # Update test_dict
         else:
             print("** attribute doesn't exist **")
 
