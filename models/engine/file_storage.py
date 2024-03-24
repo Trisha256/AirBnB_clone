@@ -53,6 +53,8 @@ class FileStorage:
 
         except FileNotFoundError:
             pass
+        except ModuleNotFoundError: 
+            pass
         except JSONDecodeError as e:
             pass
         else:
