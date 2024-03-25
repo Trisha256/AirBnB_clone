@@ -185,7 +185,7 @@ class HBNBCommand(cmd.Cmd):
                     obj.__dict__[k] = valtype(p)
                 else:
                     obj.__dict__[k] = p
-        storage.save()
+                    storage.save()
 
 
 if __name__ == '__main__':
