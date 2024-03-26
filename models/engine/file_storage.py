@@ -9,6 +9,7 @@ from models.city import City
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
+from json.decoder import JSONDecodeError
 
 
 class FileStorage:
@@ -40,22 +41,18 @@ class FileStorage:
     def reload(self):
         """Deserializes the json file __file_path to __objects,
         if it exists."""
-        from json.decoder import JSONDecodeError
         try:
             with open(FileStorage.__file_path) as f:
                 obj_dict = json.load(f)
                 for d in obj_dict.values():
                     cls_name = d.pop("__class__")
-                    cls = getattr(importlib.import_module('models.' +
-                        cls_name), cls_name)
+                    cls = getattr
+                    (importlib.import_module('models.' + cls_name),
+                     cls_name)
                     obj = cls(**d)
                     self.new(obj)
 
-        except FileNotFoundError:
-            pass
-        except ModuleNotFoundError: 
-            pass
-        except JSONDecodeError as e:
+        except (FileNotFoundError, JSONDecodeError, ModuleNotFoundError):
             pass
         else:
             from models import storage  # Import storage here
