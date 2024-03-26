@@ -71,6 +71,7 @@ class HBNBCommand(cmd.Cmd):
                 if command[0] in arg_dict.keys():
                     call = "{} {}".format(arg_1[0], command[1])
                     return arg_dict[command[0]](call)
+
     def do_quit(self, arg):
         """Exit the program."""
         return True
